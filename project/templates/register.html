@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Miko Impact - Register
+{% endblock %}
+
+{% block main %}
+    <div class="center icon">
+        <img src="{{ url_for('static', filename='icon.jpeg') }}" alt="Icon Image" style="width:200px; height:auto;" />
+    </div>
+    <form action="/register" method="post">
+        <div class="register-fields">
+            <div class="register-user mb-3">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Username" type="text">
+            </div>
+            <div class="mb-3">
+                <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password">
+            </div>
+            <div class="mb-3" style="margin-top: -10px;">
+                <input class="form-control mx-auto w-auto" name="confirmation" placeholder="Confirm Password" type="password">
+            </div>
+            <button class="register-btn btn btn-primary" type="submit">Register</button>
+        </div>
+    </form>
+{% endblock %}

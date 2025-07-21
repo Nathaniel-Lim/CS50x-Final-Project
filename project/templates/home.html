@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Miko Impact - Home
+{% endblock %}
+
+{% block main %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="flash-messages">
+      {% for message in messages %}
+        <p>{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<div class="home-btns center">
+  <a href="{{ url_for('newdeck') }}"><button>New Deck</button></a>
+  <a href="{{ url_for('addtoexisting') }}"><button>Add to existing deck</button></a>
+  <a href="{{ url_for('mydecks') }}"><button>My decks</button></a>
+</div>
+<!--New deck | Add to existing deck (then show all existing) | My decks--->
+
+<div class="bubble-wrapper" style="position: fixed; bottom: 0; left: 0; z-index: 999;">
+  <div class="speech-bubble">What would you like to do today?</div>
+  <img src="{{ url_for('static', filename='bbt.jpeg') }}" style="width:500px; height:auto;">
+
+</div>
+
+{% endblock %}

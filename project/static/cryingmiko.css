@@ -1,0 +1,18 @@
+.crying-miko-container {
+    text-align: center;
+}
+
+.crying-miko-container button {
+  color: white;
+  background-color: #800080;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.crying-miko-container button:hover {
+  background-color: #A020F0;
+}

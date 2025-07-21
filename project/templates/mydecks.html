@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Miko Impact - My decks
+{% endblock %}
+
+{% block main %}
+<div class="center mydecks-head font-effect-fire">
+    <h2>My decks</h2>
+    <h3>Select a deck to review</h3>
+</div>
+    {% for deck in decks %}
+    <li class="triangle-list">
+        <a href="{{ url_for('deck', deck_name=deck.category) }}"><button class="deck-btns">{{ deck.category }}</button></a>
+    </li>
+    {% else %}
+    <li style="list-style:none;" class="not-found center">
+        <p class="no-decks">No decks found :(</p>
+        <a href="{{ url_for('newdeck') }}"><button class="deck-btns">Create One</button></a>
+    </li>
+    {% endfor %}
+
+<!-- do a loop to display all the current decks to pick which to start learning -->
+{% endblock %}

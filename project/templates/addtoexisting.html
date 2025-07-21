@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Miko Impact - Add to existing decks
+{% endblock %}
+
+{% block main %}
+<div class="center addtoexisting-head font-effect-fire">
+    <h2>My decks</h2>
+    <h3>Select a deck to add to</h3>
+</div>
+<ul style="padding-left: 0;">
+{% for deck in decks %}
+    <li class="triangle-list">
+        <form action="{{ url_for('input_data') }}" method="POST">
+            <input type="hidden" name="deck_name" value="{{ deck.category }}">
+            <button class="deck-btns" type="submit">{{ deck.category }}</button>
+        </form>
+    </li>
+{% else %}
+    <li style="list-style: none;" class="not-found center">
+        <p class="no-decks">No decks found :(</p>
+        <a href="{{ url_for('newdeck') }}"><button class="deck-btns">Create One</button></a>
+    </li>
+{% endfor %}
+</ul>
+
+<!-- do another for loop to display all the current decks to pick which to add to -->
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Miko Impact - New deck
+{% endblock %}
+
+{% block main %}
+<div class="newdeck-abc">
+  <p>⚠️ <strong>Instructions:</strong> PLEASE (I mean it) prompt ChatGPT for the following fields exactly!</p>
+  <p>👉 Copy this: <code>word kana romaji meaning example_sentence</code></p>
+</div>
+
+<form action="/addtodeck" method="POST">
+  <label for="csv_text">Upload CSV:</label><br>
+  <textarea name="csv_text" rows="10" cols="60" placeholder="word,kana,romaji,meaning,example sentence&#10;巨人,きょじん,kyojin,Titan,巨人が壁を越えた！" required></textarea><br>
+  <input type="hidden" name="deck_name" value="{{ deck_name }}">
+
+  <button type="submit">Upload Deck</button>
+</form>
+
+
+{% endblock %}

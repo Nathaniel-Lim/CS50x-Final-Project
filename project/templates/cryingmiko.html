@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Miko Impact - Sad Smol Miko
+{% endblock %}
+
+{% block head_css %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='cryingmiko.css') }}">
+{% endblock %}
+
+
+{% block main %}
+    <div class="crying-miko-container">
+        <h2>💔 Miko is crying because you keep on forgetting this word 😿</h2>
+        <img src="{{ url_for('static', filename='cryingmiko.jpeg') }}" style="width: 250px; height: auto;" alt="Crying Miko">
+        <form action="/deck" method="GET">
+            <input type="hidden" name="deck_name" value="{{ deck_name }}">
+            <input type="hidden" name="card_id" value="{{ card_id }}">
+            <button type="submit">I'm sorry Miko let me try again 😭</button>
+        </form>
+    </div>
+{% endblock %}

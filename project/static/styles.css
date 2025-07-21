@@ -1,0 +1,176 @@
+.center {
+    text-align: center;
+}
+
+.icon {
+    margin-top: 50px;
+}
+
+.title {
+    margin-top: 50px;
+}
+
+.outro,
+.intro {
+  font-family: "Sofia", sans-serif;
+  font-size: 30px;
+}
+
+body {
+    background-color: violet !important;
+}
+
+.font-effect-fire {
+  text-shadow: 2px 2px 5px #330000; /* dark shadow to improve contrast */
+  opacity: 0.9;
+}
+
+.login-fields {
+  text-align: center;
+}
+
+.login-btn {
+  color: white !important;
+  background-color: red !important;
+  border-color: purple !important;
+}
+
+.login-user {
+  margin-top: 50px;
+}
+
+.register-fields {
+  text-align:center;
+}
+
+.register-user {
+  margin-top: 50px;
+}
+
+.register-btn {
+  color:white !important;
+  background-color: red !important;
+  border-color: purple !important;
+}
+
+
+.bubble-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.speech-bubble {
+  position: absolute;
+  top: -20px;
+  right: -200px;
+  background: #FFF0F5;
+  color: black;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 28px;
+  font-family: 'Delius Swash Caps', cursive;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  max-width: 500px;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 10px;
+  border-width: 10px 10px 0 10px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+.home-btns button {
+  margin-top: 50px;
+  color: white;
+  background-color: #800080;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.deck-btns button,
+.deck-btns {
+  color: white;
+  background-color: #800080;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.deck-btns:hover {
+  background-color: #A020F0;
+}
+
+.home-btns button:hover {
+  background-color: #a020f0; /* lighter purple */
+}
+
+.newdeck-abc {
+  font-size: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background-color: #fff8dc;
+  border-left: 5px solid #ffae42;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.newdeck-abc p:first-child {
+  color: #b22222;
+}
+
+.addtoexisting-head,
+.mydecks-head {
+  font-family: "Intel One Mono", sans-serif;
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+li.triangle-list {
+  position: relative;
+  margin-bottom: 12px;
+  padding-left: 85px;
+  list-style: none;
+}
+
+li.triangle-list::before {
+  content: "▶";
+  position: absolute;
+  left: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ff0000;
+  font-size: 30px;
+}
+
+.no-decks {
+  font-size: 30px;
+  color: blue;
+}
+
+.card {
+  text-align: center;
+}
+
+.card-value {
+  color: #FF69B4; /* or any color you want */
+  font-weight: bold; /* optional */
+}
+
+.final {
+  margin-top: 20px;
+}
+
+.done {
+  text-decoration: none;
+}

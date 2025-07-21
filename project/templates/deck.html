@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Miko Impact - Deck
+{% endblock %}
+
+{% block main %}
+<!--normal review reset score back to zero-->
+<h2>{{ deck_name }}</h2>
+
+<div id="cards-container">
+    {% for card in cards %}
+        <div class="card" data-card-id="{{ card.id }}" style="{% if not loop.first %}display:none;{% endif %}">
+            <p>Word: <span class="card-value">{{ card.word }}</span></p>
+            <p>Kana: <span class="card-value">{{ card.kana }}</span></p>
+            <button onclick="showAnswer(this)">Show answer</button>
+            <div class="answer" style="display:none;">
+                <p>Romaji: <span class="card-value">{{ card.romaji }}</span></p>
+                <p>Meaning: <span class="card-value">{{ card.meaning }}</span></p>
+                <p>Example Sentence: <span class="card-value">{{ card.example_sentence }}</span></p>
+
+                <div>
+                    <button class="deck-btns" onclick="answerCard(this, -1)">No idea</button>
+                    <button class="deck-btns" onclick="answerCard(this, 0)">Not sure</button>
+                    <button class="deck-btns" onclick="answerCard(this, 1)">Easy</button>
+                </div>
+            </div>
+        </div>
+
+
+    {% endfor %}
+</div>
+
+{% if completed %}
+  <div class="alert alert-success center font-effect-fire outro">
+    🎉 Congrats on (finally) completing the deck! 💛
+  </div>
+  <div class="center headempty">
+    <img src="{{ url_for('static', filename='headempty.jpeg') }}" style="width:200px; height:auto;">
+  </div>
+  <p class="center final">
+    <a href="/home" class="deck-btns done">Back to Home</a>
+  </p>
+{% else %}
+    <div class="continue" style="display:none;">
+        <p>You have completed <span id="round-count"></span> round(s)</p>
+        <a href="/continuereviewing?deck_name={{ deck_name }}"><button class="deck-btns">Continue reviewing?</button></a>
+    </div>
+{% endif %}
+
+<script>
+
+function showAnswer(button) {
+    const answerDiv = button.nextElementSibling;
+    answerDiv.style.display = 'block';
+    button.style.display = 'none';
+}
+
+function answerCard(button, scoreChange) {
+    const cardDiv = button.closest('.card');
+    const nextCard = cardDiv.nextElementSibling;
+    const cardId = cardDiv.dataset.cardId; //JavaScript automatically converts kebab-case to camelCase when accessing data-* attributes via .dataset.
+// data-card-id in html --> dataset.cardId in js
+    // (Optional) You can send a fetch request here to update review_score in DB
+
+    cardDiv.style.display = 'none';
+    if (nextCard) {
+        nextCard.style.display = 'block';
+    } else {
+
+        cbutton = document.querySelector(".continue");
+        cbutton.style.display = 'block';
+
+        fetch("/increment_round", { method: "POST" })
+            .then(response => response.json())
+            .then(data => {
+                // Update the round count display
+                document.getElementById("round-count").textContent = data.round_count;
+            });
+    }
+
+    fetch("/updatescore", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: `card_id=${cardId}&score=${scoreChange}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.new_score <= -3) {
+            window.location.href = `/cryingmiko?card_id=${cardId}`;
+        } else {
+            // Proceed to next card
+            showNextCard();  // replace this with your actual function
+        }
+    });
+
+}
+</script>
+    <!-- when any of the buttons are clicked, go to next loop and hide initial stuff + tabulate score-->
+
+{% endblock %}

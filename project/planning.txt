@@ -1,0 +1,33 @@
+IW ANT TO SMOKE LAH DSIAL
+
+Anki cards
+- Sprite that gets sadder the more mistakes you make cos you noob
+- If get too many wrong --> Crying Miko
+
+How to use:
+- Ask for category (if new deck)
+- Tell them to ask chatGPT for the following fields --> word kana romaji meaning example_sentence
+- Let user just paste the text (with header) into website (Should work even if headers are in diff order)
+- convert it to a CSV then upload to SQL db
+
+Import from ChatGPT in the format for table {
+- id
+- user_id (foreign key)
+- word
+- kana
+- romaji
+- meaning
+- example_sentence
+- category (The category is auto set to be the name they enter)
+- review_score
+- last_reviewed (Can use UTC - from datetime import datetime)
+}
+
+user {
+- user_id
+- username
+- hashed password
+}
+
+New deck | Add to existing deck (then show all existing) | My decks
+
